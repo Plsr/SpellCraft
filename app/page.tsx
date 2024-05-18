@@ -2,11 +2,86 @@ import { Solution } from "@/components/Solution";
 import { Speak } from "@/components/Speak";
 
 export default function Home() {
-  const word = "Hase";
+  const words = [
+    "Apfel",
+    "Buch",
+    "Katze",
+    "Hund",
+    "Haus",
+    "Auto",
+    "Baum",
+    "Fisch",
+    "Vogel",
+    "Blume",
+    "Stuhl",
+    "Tisch",
+    "Lampe",
+    "Fenster",
+    "Brot",
+    "Milch",
+    "Wasser",
+    "Kaffee",
+    "Zucker",
+    "Salz",
+    "Butter",
+    "Schule",
+    "Lehrer",
+    "Schüler",
+    "Freund",
+    "Mutter",
+    "Vater",
+    "Bruder",
+    "Schwester",
+    "Onkel",
+    "Tante",
+    "Mensch",
+    "Wald",
+    "Fluss",
+    "Strand",
+    "Stadt",
+    "Himmel",
+    "Sonne",
+    "Stern",
+    "Wolke",
+    "Regen",
+    "Schnee",
+    "Wetter",
+    "Woche",
+    "Monat",
+    "Frühling",
+    "Sommer",
+    "Herbst",
+    "Winter",
+    "Straße",
+    "Brücke",
+    "Markt",
+    "Geschäft",
+    "Laden",
+    "Hotel",
+    "Restaurant",
+    "Kino",
+    "Theater",
+    "Museum",
+    "Kirche",
+    "Schloss",
+    "Bahnhof",
+    "Flughafen",
+    "Fahrrad",
+    "Schiff",
+    "Flugzeug",
+    "Computer",
+    "Handy",
+    "Internet",
+    "Fernseher",
+    "Zeitung",
+  ];
+
+  const randomWord = words.sort(() => 0.5 - Math.random())[0];
+
   return (
     <div>
-      <Speak word={word} />
-      <Solution word={word} />
+      <Speak word={randomWord} />
+      <Solution word={randomWord} />
     </div>
   );
 }
