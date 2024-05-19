@@ -94,6 +94,50 @@ export default function Home() {
       name: "Katze",
       image: "/images/cat.webp",
     },
+    {
+      name: "Vogel",
+      image: "/images/bird.webp",
+    },
+    {
+      name: "Hase",
+      image: "/images/bunny.webp",
+    },
+    {
+      name: "Wolke",
+      image: "/images/cloud.webp",
+    },
+    {
+      name: "Herz",
+      image: "/images/heart.webp",
+    },
+    {
+      name: "Pferd",
+      image: "/images/horse.webp",
+    },
+    {
+      name: "Sonne",
+      image: "/images/sun.webp",
+    },
+    {
+      name: "Ball",
+      image: "/images/ball.webp",
+    },
+    {
+      name: "Baby",
+      image: "/images/baby.webp",
+    },
+    {
+      name: "Baum",
+      image: "/images/tree.webp",
+    },
+    {
+      name: "Glass",
+      image: "/images/glass.webp",
+    },
+    {
+      name: "Buch",
+      image: "/images/book.webp",
+    },
   ];
 
   const randomWord = testWords.sort(() => 0.5 - Math.random())[0];
