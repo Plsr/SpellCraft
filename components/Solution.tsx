@@ -6,6 +6,7 @@ import { LetterButton } from "./LetterButton";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
+import { ArrowRight, Shuffle } from "lucide-react";
 
 export const Solution = ({
   word,
@@ -66,21 +67,33 @@ export const Solution = ({
           );
         })}
       </div>
-      <button
-        onClick={handleNextClick}
-        className={clsx(
-          "transition-all  mt-4 px-4 py-2 font-bold  text-white rounded-lg border border-b-4 ",
-          correct && "hover:bg-lime-600 bg-lime-500 border-lime-700",
-          !correct && "bg-gray-400 border-gray-500 cursor-not-allowed"
-        )}
-      >
-        Weiter
-        {correct && (
-          <>
-            <ConfettiExplosion />
-          </>
-        )}
-      </button>
+      <div className="grid grid-cols-2 gap-6">
+        <button
+          onClick={correct ? handleNextClick : () => {}}
+          className={clsx(
+            "transition-all flex justify-center mt-4 px-4 py-2 font-bold  text-white rounded-lg border border-b-4 ",
+            correct && "hover:bg-lime-600 bg-lime-500 border-lime-700",
+            !correct && "bg-gray-300 border-gray-400 cursor-not-allowed"
+          )}
+        >
+          <ArrowRight />
+          {correct && (
+            <>
+              <ConfettiExplosion />
+            </>
+          )}
+        </button>
+        <button
+          onClick={!correct ? handleNextClick : () => {}}
+          className={clsx(
+            "transition-all flex justify-center mt-4 px-4 py-2 font-bold  text-white rounded-lg border border-b-4 ",
+            !correct && "hover:bg-slate-600 bg-slate-500 border-slate-700",
+            correct && "bg-gray-400 border-gray-500 cursor-not-allowed"
+          )}
+        >
+          <Shuffle />
+        </button>
+      </div>
     </>
   );
 };

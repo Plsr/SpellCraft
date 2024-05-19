@@ -30,7 +30,7 @@ export const LetterButton = ({
   return (
     <div
       className={clsx(
-        "border border-b-4 bg-white rounded-lg text-gray-500 border-gray-200 px-6 py-4 flex items-center",
+        "border border-b-4 bg-white font-bold text-sm rounded-lg text-gray-500 border-gray-200 px-6 py-4 flex items-center",
         !disabled && "hover:shadow-lg cursor-pointer hover:border-gray-300",
         disabled && "opacity-30",
         shouldAnimate === "false" &&
@@ -39,7 +39,7 @@ export const LetterButton = ({
       )}
       onClick={handleClick}
     >
-      {letter.toLowerCase()}
+      {letter.toUpperCase()}
     </div>
   );
 };

@@ -83,7 +83,7 @@ export default function Home() {
       image: "/images/apple.webp",
     },
     {
-      name: "Hause",
+      name: "Haus",
       image: "/images/house.webp",
     },
     {
