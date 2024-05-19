@@ -17,6 +17,7 @@ export const Speak = ({ word }: { word: string }) => {
   function speak() {
     const utterance = new window.SpeechSynthesisUtterance(word);
     utterance.lang = "de-DE";
+    utterance.rate = 0.7;
     window.speechSynthesis.speak(utterance);
   }
 

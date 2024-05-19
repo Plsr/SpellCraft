@@ -60,6 +60,9 @@ export const Solution = ({ word }: { word: string }) => {
               letter={letter}
               onClick={() => handleClick(letter, index)}
               disabled={selectedIndices.includes(index)}
+              clickBehavior={
+                word[currentSolution.length] === letter ? "correct" : "false"
+              }
             />
           );
         })}
