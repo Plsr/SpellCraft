@@ -1,5 +1,6 @@
 import { Solution } from "@/components/Solution";
 import { Speak } from "@/components/Speak";
+import Image from "next/image";
 
 export default function Home() {
   const words = [
@@ -76,12 +77,45 @@ export default function Home() {
     "Zeitung",
   ];
 
-  const randomWord = words.sort(() => 0.5 - Math.random())[0];
+  const testWords = [
+    {
+      name: "Apfel",
+      image: "/images/apple.webp",
+    },
+    {
+      name: "Hause",
+      image: "/images/house.webp",
+    },
+    {
+      name: "Hund",
+      image: "/images/dog.webp",
+    },
+    {
+      name: "Katze",
+      image: "/images/cat.webp",
+    },
+  ];
+
+  const randomWord = testWords.sort(() => 0.5 - Math.random())[0];
 
   return (
-    <div>
-      <Speak word={randomWord} />
-      <Solution word={randomWord} />
+    <div className="bg-yellow-50 h-full flex items-center justify-center">
+      <div className="flex flex-col bg-orange-100 p-8 rounded-xl border-4 border-orange-200">
+        <Speak word={randomWord.name} />
+        <Image
+          className="rounded-lg max-h-72 my-6 mx-auto"
+          src={randomWord.image}
+          alt={randomWord.name}
+          width={300}
+          height={500}
+        />
+        <Solution
+          word={randomWord.name}
+          randomizedLetters={randomWord.name
+            .split("")
+            .sort(() => 0.5 - Math.random())}
+        />
+      </div>
     </div>
   );
 }

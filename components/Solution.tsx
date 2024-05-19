@@ -5,8 +5,15 @@ import ConfettiExplosion from "react-confetti-explosion";
 import { LetterButton } from "./LetterButton";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import clsx from "clsx";
 
-export const Solution = ({ word }: { word: string }) => {
+export const Solution = ({
+  word,
+  randomizedLetters,
+}: {
+  word: string;
+  randomizedLetters: string[];
+}) => {
   const [currentSolution, setCurrentSolution] = useState<string[]>([]);
   const [correct, setCorrect] = useState(false);
   const [selectedIndices, setSelectedIndices] = useState<number[]>([]);
@@ -17,10 +24,6 @@ export const Solution = ({ word }: { word: string }) => {
       setCorrect(true);
     }
   }, [currentSolution, word]);
-
-  useEffect(() => {
-    console.log("doing it");
-  }, [router]);
 
   const handleClick = (letter: string, index: number) => {
     if (word.split("")[currentSolution.length] === letter) {
@@ -36,20 +39,16 @@ export const Solution = ({ word }: { word: string }) => {
     router.refresh();
   };
 
-  const randomizedLetters = useMemo(() => {
-    return word.split("").sort(() => 0.5 - Math.random());
-  }, [word]);
-
   return (
     <>
-      <div className="flex gap-4 min-h-12">
+      <div className="flex gap-4 min-h-16">
         {currentSolution.map((letter, index) => {
           return <LetterButton key={index} letter={letter} />;
         })}
       </div>
       <div
-        className="mt-2 mb-8 border-b border-b-green"
-        style={{ width: `${randomizedLetters.length * (44 + 12)}px` }}
+        className="mt-2 mb-8 border-b-2 border-b-orange-300"
+        style={{ width: `${randomizedLetters.length * (58 + 12)}px` }}
       />
 
       <div className="flex gap-4">
@@ -67,18 +66,21 @@ export const Solution = ({ word }: { word: string }) => {
           );
         })}
       </div>
-
-      {correct && (
-        <>
-          <ConfettiExplosion />
-          <button
-            onClick={handleNextClick}
-            className="transition-all hover:bg-lime-600 mt-4 px-4 py-2 font-bold bg-lime-500 text-white rounded-lg border border-b-4 border-lime-700"
-          >
-            Weiter
-          </button>
-        </>
-      )}
+      <button
+        onClick={handleNextClick}
+        className={clsx(
+          "transition-all  mt-4 px-4 py-2 font-bold  text-white rounded-lg border border-b-4 ",
+          correct && "hover:bg-lime-600 bg-lime-500 border-lime-700",
+          !correct && "bg-gray-400 border-gray-500 cursor-not-allowed"
+        )}
+      >
+        Weiter
+        {correct && (
+          <>
+            <ConfettiExplosion />
+          </>
+        )}
+      </button>
     </>
   );
 };

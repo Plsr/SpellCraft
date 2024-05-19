@@ -30,11 +30,11 @@ export const LetterButton = ({
   return (
     <div
       className={clsx(
-        "border border-b-4 rounded-lg text-gray-500 border-gray-200 px-4 py-2 flex items-center",
+        "border border-b-4 bg-white rounded-lg text-gray-500 border-gray-200 px-6 py-4 flex items-center",
         !disabled && "hover:shadow-lg cursor-pointer hover:border-gray-300",
         disabled && "opacity-30",
         shouldAnimate === "false" &&
-          "animate-wobble duration-100 border-red-300 text-red-400",
+          "transition-none animate-wobble duration-100 bg-red-50 text-red-400",
         shouldAnimate === "correct" && "border-green-600 text-green-700"
       )}
       onClick={handleClick}
